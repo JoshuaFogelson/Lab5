@@ -7,7 +7,7 @@ using namespace std;
 #define USING_DHT11      true    // The DHT11 uses only 8 bits
 #define DHT_GPIO         22      // Using GPIO 22
 #define BUTTON_GPIO      27      // this is GPIO27, Pin 13
-#define LH_THRESHOLD     26      // Low=~14, High=~38 - pick avg.
+#define LH_THRESHOLD     30      // Low=~14, High=~38 - pick avg.
 
 
 
@@ -29,14 +29,10 @@ TRYAGAIN:                        // If checksum fails (come back here)
    pinMode(DHT_GPIO, INPUT);                  // now gpio is an input
 
    // need to ignore the first and second high after going low
-   cout << "made it here 1" << endl;
    do { delayMicroseconds(1); } while(digitalRead(DHT_GPIO)==HIGH);
-   cout << "made it here 2" << endl;
    do { delayMicroseconds(1); } while(digitalRead(DHT_GPIO)==LOW);
-   cout << "made it here 3" << endl;
    do { delayMicroseconds(1); } while(digitalRead(DHT_GPIO)==HIGH);
    // Remember the highs, ignore the lows -- a good philosophy!
-   
    for(int d=0; d<5; d++) {       // for each data byte
       // read 8 bits
       for(int i=0; i<8; i++) {    // for each bit of data
@@ -51,7 +47,6 @@ TRYAGAIN:                        // If checksum fails (come back here)
          data[d] = data[d] | ((width > LH_THRESHOLD) << (7-i));
       }
    }
-   cout << "made it here 3" << endl;
    if (USING_DHT11){
       humid = data[0] * 10;            // one byte - no fractional part
       temp = data[2] * 10;             // multiplying to keep code concise
@@ -61,7 +56,6 @@ TRYAGAIN:                        // If checksum fails (come back here)
       temp = (data[2]<<8 | data[3]);   // same again for temperature
    }
    unsigned char chk = 0;   // the checksum will overflow automatically
-   cout << "made it here 4" << endl;
    for(int i=0; i<4; i++){ chk+= data[i]; }
    if(chk==data[4]){
       cout << "The checksum is good" << endl;
