@@ -9,12 +9,12 @@ using namespace std;
 #define BUTTON_GPIO      27      // this is GPIO27, Pin 13
 #define LH_THRESHOLD     26      // Low=~14, High=~38 - pick avg.
 
-
+//80 open
+//55 close
 
 
 
 void temp(void){
-cout << "HERE" << endl;
 piHiPri(99);
 TRYAGAIN:                        // If checksum fails (come back here)
    int humid = 0, temp = 0;
@@ -74,10 +74,9 @@ int main(){
    pinMode(BUTTON_GPIO, INPUT);
    cout << "Press the button on GPIO " << BUTTON_GPIO << endl;
    wiringPiISR(BUTTON_GPIO, INT_EDGE_RISING, &temp);
-   cout << "HERE" <<endl;
-   for(int i=10; i>0; i--) { // countdown to program end
+   for(int i=100; i>0; i--) { // countdown to program end
    cout << "You have " << i << " seconds remaining..." << endl;
    sleep(1); // sleep for 1 second
    }
-   return 0; // program ends after 10s
+   return 0; // program ends after 100s
 }
