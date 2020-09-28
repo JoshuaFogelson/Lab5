@@ -31,10 +31,12 @@ TRYAGAIN:                        // If checksum fails (come back here)
    // need to ignore the first and second high after going low
    cout << "made it here 1" << endl;
    do { delayMicroseconds(1); } while(digitalRead(DHT_GPIO)==HIGH);
+   cout << "made it here 2" << endl;
    do { delayMicroseconds(1); } while(digitalRead(DHT_GPIO)==LOW);
+   cout << "made it here 3" << endl;
    do { delayMicroseconds(1); } while(digitalRead(DHT_GPIO)==HIGH);
    // Remember the highs, ignore the lows -- a good philosophy!
-   cout << "made it here 2" << endl;
+   
    for(int d=0; d<5; d++) {       // for each data byte
       // read 8 bits
       for(int i=0; i<8; i++) {    // for each bit of data
