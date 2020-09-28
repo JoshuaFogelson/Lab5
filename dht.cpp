@@ -4,7 +4,7 @@
 #include<iomanip>
 using namespace std;
 
-#define USING_DHT11      false   // The DHT11 uses only 8 bits
+#define USING_DHT11      true   // The DHT11 uses only 8 bits
 #define DHT_GPIO         27      // Using GPIO 27
 #define LH_THRESHOLD     26      // Low=~14, High=~38 - pick avg.
 
