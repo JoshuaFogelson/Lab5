@@ -66,11 +66,12 @@ TRYAGAIN:                        // If checksum fails (come back here)
    }
    return 0;
 }
+
 int main(){
    
    cout << "Starting the one-wire sensor program" << endl;
    wiringPiSetupGpio();
    pinMode(BUTTON_GPIO, INPUT);
    cout << "Press the button on GPIO " << BUTTON_GPIO << endl;
-   wiringPiISR(BUTTON_GPIO, INT_EDGE_RISING, &temp;
+   wiringPiISR(BUTTON_GPIO, INT_EDGE_RISING, &temp());
 }
