@@ -18,9 +18,9 @@ int main(){
    wiringPiSetupGpio();
    pinMode(BUTTON_GPIO, INPUT);
    cout << "Press the button on GPIO " << BUTTON_GPIO << endl;
-   wiringPiISR(BUTTON_GPIO, INT_EDGE_RISING, &temp);
+   wiringPiISR(BUTTON_GPIOa, INT_EDGE_RISING, &temp);
 }
-int temp(){
+int temp(void){
 cout << "HERE" << endl;
 piHiPri(99);
 TRYAGAIN:                        // If checksum fails (come back here)
