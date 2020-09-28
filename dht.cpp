@@ -13,7 +13,7 @@ using namespace std;
 
 
 
-int temp(void){
+void temp(void){
 cout << "HERE" << endl;
 piHiPri(99);
 TRYAGAIN:                        // If checksum fails (come back here)
@@ -64,7 +64,7 @@ TRYAGAIN:                        // If checksum fails (come back here)
       usleep(2000000);   // have to delay for 1-2 seconds between readings
       goto TRYAGAIN;     // a GOTO!!! call yourself a C/C++ programmer!
    }
-   return 0;
+   
 }
 
 int main(){
