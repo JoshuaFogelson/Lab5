@@ -20,6 +20,7 @@ int main(){
    piHiPri(99);
 
 TRYAGAIN:                        // If checksum fails (come back here)
+   cout << "made it here" << endl;
    unsigned char data[5] = {0,0,0,0,0};
    pinMode(DHT_GPIO, OUTPUT);                 // gpio starts as output
    digitalWrite(DHT_GPIO, LOW);               // pull the line low
