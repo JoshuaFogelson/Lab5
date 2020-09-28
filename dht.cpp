@@ -74,4 +74,5 @@ int main(){
    pinMode(BUTTON_GPIO, INPUT);
    cout << "Press the button on GPIO " << BUTTON_GPIO << endl;
    wiringPiISR(BUTTON_GPIO, INT_EDGE_RISING, &temp);
+   cout << "HERE" <<endl;
 }
