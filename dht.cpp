@@ -20,7 +20,7 @@ int main(){
    cout << "Press the button on GPIO " << BUTTON_GPIO << endl;
    wiringPiISR(BUTTON_GPIO, INT_EDGE_RISING, &temp);
 }
-void temp(){
+int temp(){
 cout << "HERE" << endl;
 piHiPri(99);
 TRYAGAIN:                        // If checksum fails (come back here)
