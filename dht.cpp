@@ -12,14 +12,7 @@ using namespace std;
 
 
 
-int main(){
-   
-   cout << "Starting the one-wire sensor program" << endl;
-   wiringPiSetupGpio();
-   pinMode(BUTTON_GPIO, INPUT);
-   cout << "Press the button on GPIO " << BUTTON_GPIO << endl;
-   wiringPiISR(BUTTON_GPIO, INT_EDGE_RISING, &temp());
-}
+
 int temp(void){
 cout << "HERE" << endl;
 piHiPri(99);
@@ -72,4 +65,12 @@ TRYAGAIN:                        // If checksum fails (come back here)
       goto TRYAGAIN;     // a GOTO!!! call yourself a C/C++ programmer!
    }
    return 0;
+}
+int main(){
+   
+   cout << "Starting the one-wire sensor program" << endl;
+   wiringPiSetupGpio();
+   pinMode(BUTTON_GPIO, INPUT);
+   cout << "Press the button on GPIO " << BUTTON_GPIO << endl;
+   wiringPiISR(BUTTON_GPIO, INT_EDGE_RISING, &temp;
 }
