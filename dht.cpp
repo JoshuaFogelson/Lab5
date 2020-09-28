@@ -13,7 +13,7 @@ using namespace std;
 
 
 int main(){
-   int humid = 0, temp = 0;
+   
    cout << "Starting the one-wire sensor program" << endl;
    wiringPiSetupGpio();
    pinMode(BUTTON_GPIO, INPUT);
@@ -24,6 +24,7 @@ int temp(){
 cout << "HERE" << endl;
 piHiPri(99);
 TRYAGAIN:                        // If checksum fails (come back here)
+   int humid = 0, temp = 0;
    unsigned char data[5] = {0,0,0,0,0};
    pinMode(DHT_GPIO, OUTPUT);                 // gpio starts as output
    digitalWrite(DHT_GPIO, LOW);               // pull the line low
