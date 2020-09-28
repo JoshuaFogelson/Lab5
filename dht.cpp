@@ -4,15 +4,21 @@
 #include<iomanip>
 using namespace std;
 
-#define USING_DHT11      true   // The DHT11 uses only 8 bits
+#define USING_DHT11      true    // The DHT11 uses only 8 bits
 #define DHT_GPIO         22      // Using GPIO 22
+#define BUTTON_GPIO      27      // this is GPIO27, Pin 13
 #define LH_THRESHOLD     26      // Low=~14, High=~38 - pick avg.
+
+
+
 
 int main(){
    int humid = 0, temp = 0;
    cout << "Starting the one-wire sensor program" << endl;
    wiringPiSetupGpio();
+   pinMode(BUTTON_GPIO, INPUT);
    piHiPri(99);
+
 TRYAGAIN:                        // If checksum fails (come back here)
    unsigned char data[5] = {0,0,0,0,0};
    pinMode(DHT_GPIO, OUTPUT);                 // gpio starts as output
