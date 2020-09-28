@@ -73,7 +73,6 @@ int main(){
    wiringPiSetupGpio();
    pinMode(BUTTON_GPIO, INPUT);
    cout << "Press the button on GPIO " << BUTTON_GPIO << endl;
-   wiringPiISR(BUTTON_GPIO, INT_EDGE_RISING, &temp);
    for(int i=100; i>0; i--) { // countdown to program end
    cout << "You have " << i << " seconds remaining..." << endl;
    wiringPiISR(BUTTON_GPIO, INT_EDGE_RISING, &temp);
