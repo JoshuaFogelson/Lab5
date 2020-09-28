@@ -20,7 +20,7 @@ int main(){
    piHiPri(99);
 
 TRYAGAIN:                        // If checksum fails (come back here)
-   cout << "made it here" << endl;
+   
    unsigned char data[5] = {0,0,0,0,0};
    pinMode(DHT_GPIO, OUTPUT);                 // gpio starts as output
    digitalWrite(DHT_GPIO, LOW);               // pull the line low
@@ -29,10 +29,12 @@ TRYAGAIN:                        // If checksum fails (come back here)
    pinMode(DHT_GPIO, INPUT);                  // now gpio is an input
 
    // need to ignore the first and second high after going low
+   cout << "made it here 1" << endl;
    do { delayMicroseconds(1); } while(digitalRead(DHT_GPIO)==HIGH);
    do { delayMicroseconds(1); } while(digitalRead(DHT_GPIO)==LOW);
    do { delayMicroseconds(1); } while(digitalRead(DHT_GPIO)==HIGH);
    // Remember the highs, ignore the lows -- a good philosophy!
+   cout << "made it here 2" << endl;
    for(int d=0; d<5; d++) {       // for each data byte
       // read 8 bits
       for(int i=0; i<8; i++) {    // for each bit of data
@@ -47,6 +49,7 @@ TRYAGAIN:                        // If checksum fails (come back here)
          data[d] = data[d] | ((width > LH_THRESHOLD) << (7-i));
       }
    }
+   cout << "made it here 3" << endl;
    if (USING_DHT11){
       humid = data[0] * 10;            // one byte - no fractional part
       temp = data[2] * 10;             // multiplying to keep code concise
@@ -56,6 +59,7 @@ TRYAGAIN:                        // If checksum fails (come back here)
       temp = (data[2]<<8 | data[3]);   // same again for temperature
    }
    unsigned char chk = 0;   // the checksum will overflow automatically
+   cout << "made it here 4" << endl;
    for(int i=0; i<4; i++){ chk+= data[i]; }
    if(chk==data[4]){
       cout << "The checksum is good" << endl;
