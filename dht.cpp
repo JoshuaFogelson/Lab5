@@ -17,8 +17,12 @@ int main(){
    cout << "Starting the one-wire sensor program" << endl;
    wiringPiSetupGpio();
    pinMode(BUTTON_GPIO, INPUT);
-   piHiPri(99);
-
+   cout << "Press the button on GPIO " << BUTTON_GPIO << endl;
+   wiringPiISR(BUTTON_GPIO, INT_EDGE_RISING, &temp);
+}
+void temp(){
+cout << "HERE" << endl;
+piHiPri(99);
 TRYAGAIN:                        // If checksum fails (come back here)
    unsigned char data[5] = {0,0,0,0,0};
    pinMode(DHT_GPIO, OUTPUT);                 // gpio starts as output
@@ -31,7 +35,6 @@ TRYAGAIN:                        // If checksum fails (come back here)
    do { delayMicroseconds(1); } while(digitalRead(DHT_GPIO)==HIGH);
    do { delayMicroseconds(1); } while(digitalRead(DHT_GPIO)==LOW);
    do { delayMicroseconds(1); } while(digitalRead(DHT_GPIO)==HIGH);
-   cout << "HERE" << endl;
    // Remember the highs, ignore the lows -- a good philosophy!
    for(int d=0; d<5; d++) {       // for each data byte
       // read 8 bits
