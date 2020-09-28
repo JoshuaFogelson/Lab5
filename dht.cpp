@@ -75,4 +75,9 @@ int main(){
    cout << "Press the button on GPIO " << BUTTON_GPIO << endl;
    wiringPiISR(BUTTON_GPIO, INT_EDGE_RISING, &temp);
    cout << "HERE" <<endl;
+   for(int i=10; i>0; i--) { // countdown to program end
+   cout << "You have " << i << " seconds remaining..." << endl;
+   sleep(1); // sleep for 1 second
+   }
+   return 0; // program ends after 10s
 }
