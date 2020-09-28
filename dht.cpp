@@ -7,7 +7,7 @@ using namespace std;
 #define USING_DHT11      true    // The DHT11 uses only 8 bits
 #define DHT_GPIO         22      // Using GPIO 22
 #define BUTTON_GPIO      27      // this is GPIO27, Pin 13
-#define LH_THRESHOLD     26      // Low=~14, High=~38 - pick avg.
+#define LH_THRESHOLD     30      // Low=~14, High=~38 - pick avg.
 
 
 
